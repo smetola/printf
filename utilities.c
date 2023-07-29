@@ -6,7 +6,7 @@
 /*   By: sanmetol <sanmetol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:55:35 by sanmetol          #+#    #+#             */
-/*   Updated: 2023/07/04 11:52:12 by sanmetol         ###   ########.fr       */
+/*   Updated: 2023/07/29 12:41:26 by sanmetol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	ft_putchar(char c, int *count)
 {
-	write(1, &c, 1);
-	(*count)++;
+/* 	write(1, &c, 1);
+	(*count)++; */
+	if (write(1, &c, 1) == -1)
+		*count = -1;
+	else
+		(*count)++;
 }
 
 void	ft_putstr(char *s, int *count)
@@ -23,6 +27,8 @@ void	ft_putstr(char *s, int *count)
 	int	i;
 
 	i = 0;
+	if (s == NULL)
+		s = "(null)";
 	while (s[i])
 	{
 		ft_putchar(s[i], count);

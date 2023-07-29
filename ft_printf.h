@@ -6,7 +6,7 @@
 /*   By: sanmetol <sanmetol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 14:39:59 by sanmetol          #+#    #+#             */
-/*   Updated: 2023/07/04 15:41:51 by sanmetol         ###   ########.fr       */
+/*   Updated: 2023/07/29 12:20:52 by sanmetol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	ft_puthexa(unsigned int n, char x_or_X, int *count);
 void	ft_putchar(char c, int *count);
 void	ft_putstr(char *s, int *count);
 void	ft_putnbr(int n, int *count);
-char	*ft_itoa(int n);
+char	*ft_itoa_u(unsigned int n);
 
 #endif
