@@ -46,7 +46,7 @@ void	ft_putnbr(int n, int *count)
 	if (n < 0)
 	{
 		n = -n;
-		ft_putchar('-', count);
+		ft_putchar('-', count); //cambiar estas 2 de orden
 	}
 	if (n >= 10)
 	{
@@ -93,7 +93,7 @@ void	ft_puthexa(unsigned int n, char x_or_X, int *count)
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
-	if (n > 16)
+	if (n > 16) //Poner >=
 	{
 		ft_puthexa(n / 16, x_or_X, count);
 		ft_puthexa(n % 16, x_or_X, count);
