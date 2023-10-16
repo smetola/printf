@@ -51,7 +51,7 @@ int	ft_printf(char const *s, ...)
 	{
 		if (s[i] != '%')
 			ft_putchar(s[i], &count);
-		else if (s[i] == '%')
+		else if (s[i] == '%') //Quitar este if, dejar solo else
 		{
 			i++;
 			ft_va_arg(s[i], args_l, &count);
