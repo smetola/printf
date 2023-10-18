@@ -6,7 +6,7 @@
 /*   By: sanmetol <sanmetol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:55:35 by sanmetol          #+#    #+#             */
-/*   Updated: 2023/07/25 14:20:54 by sanmetol         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:53:45 by sanmetol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ void	ft_putchar(char c, int *count)
 
 void	ft_putstr(char *s, int *count)
 {
-	int		i;
+	int	len;
 
-	i = 0;
+	len = 0;
 	if (s == NULL)
 		s = "(null)";
-	while (s[i])
-	{
-		ft_putchar(s[i], count);
-		i++;
-	}
+	while (s[len])
+		len++;
+	if (write(1, s, len) == -1)
+		*count = -1;
+	else
+		*count += len;
 }
 
 void	ft_putnbr(int n, int *count)
@@ -65,21 +66,21 @@ void	ptrhexa(unsigned long int n, int *count)
 	i = 0;
 	ft_putstr("0x", count);
 	if (n == 0)
-		ft_putchar('0', count);
-	else
 	{
-		while (n > 0)
-		{
-			hex[i] = hex_base[n % 16];
-			n = n / 16;
-			i++;
-		}
+		ft_putchar('0', count);
+		return ;
+	}
+	while (n > 0)
+	{
+		hex[i] = hex_base[n % 16];
+		n = n / 16;
+		i++;
+	}
+	i--;
+	while (i >= 0)
+	{
+		ft_putchar(hex[i], count);
 		i--;
-		while (i >= 0)
-		{
-			ft_putchar(hex[i], count);
-			i--;
-		}
 	}
 }
 
@@ -91,7 +92,7 @@ void	ft_puthexa(unsigned int n, char x_or_X, int *count)
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
-	if (n > 16)
+	if (n >= 16)
 	{
 		ft_puthexa(n / 16, x_or_X, count);
 		ft_puthexa(n % 16, x_or_X, count);

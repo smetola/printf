@@ -6,7 +6,7 @@
 /*   By: sanmetol <sanmetol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:51:28 by sanmetol          #+#    #+#             */
-/*   Updated: 2023/07/25 13:01:34 by sanmetol         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:54:40 by sanmetol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,3 @@ char	*ft_itoa_u(unsigned int n)
 	}
 	return (str);
 }
-/* if (!str[i])
-		{
-			while (i > 0)
-				free(str[--i]);
-			free(str);
-			return (NULL);
-		} */
