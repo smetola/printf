@@ -6,7 +6,7 @@
 /*   By: sanmetol <sanmetol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:53:09 by sanmetol          #+#    #+#             */
-/*   Updated: 2023/07/29 12:21:40 by sanmetol         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:39:07 by sanmetol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ int	ft_printf(char const *s, ...)
 	{
 		if (s[i] != '%')
 			ft_putchar(s[i], &count);
-		else if (s[i] == '%')
+		else
 		{
 			i++;
 			ft_va_arg(s[i], args_l, &count);
 		}
+		if (count == -1)
+			return (-1);
 		i++;
 	}
 	va_end(args_l);
@@ -64,9 +66,19 @@ int	ft_printf(char const *s, ...)
 
 /* int	main(void)
 {
+	int	i;
+	int	j;
+	
+	i = printf("%p", "");
+	j = ft_printf("%p", "");
+	printf("\n\nNor: %d\nMio: %d", i, j);
+} */
+
+/* int	main(void)
+{
 	int				n = 42;
 	unsigned int	u = -100;
-	char			c = 'z';
+	char			c = '0';
 	char 			*s = "paola";
 	void			*p = &n;
 	int				output;
@@ -74,9 +86,34 @@ int	ft_printf(char const *s, ...)
 
 	outputZERO = ft_printf("\n%c, %s, %p, %d, %i, %u,"
 		" %x, %X, %%", c, s, p, n, n, u, n, n);
+	ft_printf("%c", '1');
 	output     =    printf("\n%c, %s, %p, %d, %i, %u,"
 		" %x, %X, %%", c, s, p, n, n, u, n, n);
 	printf("\n%d\n%d\n", outputZERO, output);
+} */
+/* int	main(void)
+{
+	ft_printf("%c", '0');
+	ft_printf(" %c ", '0');
+	ft_printf(" %c", '0' - 256);
+	ft_printf("%c ", '0' + 256);
+	ft_printf(" %c %c %c ", '0', 0, '1');
+	ft_printf(" %c %c %c ", ' ', ' ', ' ');
+	ft_printf(" %c %c %c ", '1', '2', '3');
+	ft_printf(" %c %c %c ", '2', '1', 0);
+	ft_printf(" %c %c %c ", 0, '1', '2');
+
+	write(1, "\n", 1);
+
+	printf("%c", '0');
+	printf(" %c ", '0');
+	printf(" %c", '0' - 256);
+	printf("%c ", '0' + 256);
+	printf(" %c %c %c ", '0', 0, '1');
+	printf(" %c %c %c ", ' ', ' ', ' ');
+	printf(" %c %c %c ", '1', '2', '3');
+	printf(" %c %c %c ", '2', '1', 0);
+	printf(" %c %c %c ", 0, '1', '2');
 } */
 
 //gcc ft_printf.c utilities.c && ./a.out
